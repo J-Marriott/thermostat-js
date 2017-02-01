@@ -41,21 +41,51 @@ describe('Thermostat', function() {
 });
 
 describe('When power saving mode - on', function() {
-  it('prevents maximum temperature above 25 degrees', function(){
-    for (var i=0; i<=5; i++) {
-      thermostat.increase();
-    }
-    expect(thermostat.getCurrentTemp()).toEqual(25);
+    it('prevents maximum temperature above 25 degrees', function() {
+        for (var i = 0; i <= 5; i++) {
+            thermostat.increase();
+        }
+        expect(thermostat.getCurrentTemp()).toEqual(25);
 
-  });
+    });
 });
 describe('When power saving mode - off', function() {
-  it('prevents maximum temperature above 32 degrees', function(){
-    thermostat.powerSaveOff();
-    for (var i=0; i<=13; i++) {
-      thermostat.increase();
-    }
-    expect(thermostat.getCurrentTemp()).toEqual(32);
+    it('prevents maximum temperature above 32 degrees', function() {
+        thermostat.powerSaveOff();
+        for (var i = 0; i <= 13; i++) {
+            thermostat.increase();
+        }
+        expect(thermostat.getCurrentTemp()).toEqual(32);
 
-  });
+    });
+});
+
+describe('displaying usage levels', function() {
+    var thermostat
+
+    beforeEach(function() {
+        thermostat = new Thermostat();
+    });
+    describe('when temperature setting below 18 degrees', function() {
+        it('returns low-usage', function() {
+            for (var i = 0; i <= 2; i++) {
+                thermostat.decrease();
+            }
+            expect(thermostat.energyUsage()).toEqual('low-usage');
+        });
+    });
+    describe('when temperature setting above 18 and below 25 degrees', function() {
+        it('returns medium-usage', function() {
+            expect(thermostat.energyUsage()).toEqual('medium-usage');
+        });
+    });
+    describe('when temperature setting above 25 degrees', function() {
+        it('returns high-usage', function() {
+            thermostat.powerSaveOff();
+            for (var i = 0; i <= 6; i++) {
+                thermostat.increase();
+            }
+            expect(thermostat.energyUsage()).toEqual('high-usage');
+        });
+    });
 });
