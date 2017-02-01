@@ -5,6 +5,7 @@ function Thermostat () {
     this._temp = 20;
     this.powerSaveStatus = true;
     this.max_temp = 25;
+    this.DEFAULT_TEMP = 20;
 };
 
 var thermostat = new Thermostat()
@@ -40,5 +41,5 @@ Thermostat.prototype.powerSaveOn = function () {
     this.powerSaveStatus = true;
 };
 Thermostat.prototype.reset = function () {
-  this._temp = 20;
+  this._temp = this.DEFAULT_TEMP;
 }
