@@ -32,6 +32,12 @@ describe('Thermostat', function() {
         thermostat.powerSaveOn();
         expect(thermostat.isPowerSave()).toBe(true);
     });
+    it('Can reset the temperature to 20 degrees from any setting', function() {
+        thermostat.increase();
+        thermostat.reset();
+        expect(thermostat.getCurrentTemp()).toEqual(20);
+
+    })
 });
 
 describe('When power saving mode - on', function() {
@@ -40,5 +46,16 @@ describe('When power saving mode - on', function() {
       thermostat.increase();
     }
     expect(thermostat.getCurrentTemp()).toEqual(25);
+
+  });
+});
+describe('When power saving mode - off', function() {
+  it('prevents maximum temperature above 32 degrees', function(){
+    thermostat.powerSaveOff();
+    for (var i=0; i<=13; i++) {
+      thermostat.increase();
+    }
+    expect(thermostat.getCurrentTemp()).toEqual(32);
+
   });
 });
