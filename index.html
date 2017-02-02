@@ -5,49 +5,9 @@
         <title>Thermostat</title>
         <script src="src/thermostat.js"></script>
         <script src="src/jquery-3.1.1.js"></script>
+        <script src="src/interface.js"></script>
         <link rel="stylesheet" type="text/css" href="public/css/layout.css" media="screen"/>
-        <script>
 
-            $(document).ready(function () {
-                updateTemperature();
-                updatePowerSaveStatus();
-
-                $('#temperature-up').click(function () {
-                    thermostat.increase();
-                    updateTemperature();
-                });
-
-                $('#temperature-down').click(function () {
-                    thermostat.decrease();
-                    updateTemperature();
-                });
-
-                $('#temperature-reset').click(function () {
-                    thermostat.reset();
-                    updateTemperature();
-                });
-
-                $('#powersaving-on').click(function () {
-                    thermostat.powerSaveOn();
-                    updateTemperature();
-                    updatePowerSaveStatus();
-                });
-
-                $('#powersaving-off').click(function () {
-                    thermostat.powerSaveOff();
-                    updatePowerSaveStatus();
-                });
-
-                function updateTemperature() {
-                    $('#currenttemp').text('Current temp ' + thermostat.getCurrentTemp());
-                    $('#currenttemp').attr('class', thermostat.energyUsage());
-                }
-                function updatePowerSaveStatus(){
-                  $('#powersave').text('PowerSave on? ' + thermostat.isPowerSave());
-                }
-
-            });
-        </script>
     </head>
     <br>
 
@@ -55,24 +15,25 @@
         <section>
             <h1>Thermostat HUB</h1>
             <p>
-                <button id="temperature-up">+</button>
+                <button id="temperature-up">
+                    <b>+</b>
+                </button>
                 <br>
-                <button id="temperature-down">-</button>
+                <button id="temperature-down">
+                    <b>-</b>
+                </button>
                 <br>
                 <button id="temperature-reset">Reset Temp</button>
                 <br>
-                <button id="powersaving-on">PSM on</button>
-                <button id="powersaving-off">PSM off</button>
+                <button id="powersaving-on">PowerSave ON</button>
+                <button id="powersaving-off">PowerSave OFF</button>
                 <br>
             </p>
             <p1 id="currenttemp"></p1>
-
             <br><br><br>
-            <p2 id="powersave">
+            <p2 id="powersave"></p2>
+        </section>
 
-            </p2><br><br><br>
-            </section>
+    </body>
 
-        </body>
-
-    </html>
+</html>
