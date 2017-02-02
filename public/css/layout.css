@@ -25,6 +25,10 @@ p2 {
   border-radius: 4px;
 }
 
+#weather {
+  color: black;
+}
+
 button {
     width: 10%;
     background-color: #b75e16;
@@ -38,6 +42,18 @@ button {
 button:hover {
     background-color: #ba8c03;
 }
+
+select {
+    width: 10%;
+    background-color: #b75e16;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 
 #temperature-reset {
   background-color: #e25518;
