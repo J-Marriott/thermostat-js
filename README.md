@@ -65,5 +65,9 @@ So I can see how much energy is being used
 I would like the thermostat to provide colour coded current energy usage
 ```
 
+<<<<<<< HEAD
 #####Diagramming and project completed with Peter Grant-Hay (Github: Putterhead)
+=======
+#####Diagramming completed with Peter Grant-Hay (Github: Putterhead)
+>>>>>>> day-four
 <img src="http://imgur.com/qPXbAM4.png"></img>
