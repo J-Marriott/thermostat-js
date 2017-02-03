@@ -38,6 +38,12 @@ describe('Thermostat', function() {
         expect(thermostat.getCurrentTemp()).toEqual(20);
 
     })
+    it('Can switch power saving mode on or off with the toggle', function (){
+      thermostat.powerSaveToggle();
+      expect(thermostat.isPowerSave()).toBe(false);
+      thermostat.powerSaveToggle();
+      expect(thermostat.isPowerSave()).toBe(true);
+    })
 });
 
 describe('When power saving mode - on', function() {

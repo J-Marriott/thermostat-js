@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var thermostat = new Thermostat;
+    var thermostat = new Thermostat();
     updateTemperature();
     updatePowerSaveStatus();
     $.get('http://api.openweathermap.org/data/2.5/weather?q=Doncaster&appid=8a23b86c2394d1bf648b05e1d963cd18&units=metric', function(data) {
@@ -35,7 +35,8 @@ $(document).ready(function() {
     function updateTemperature() {
         $('#currenttemp').text('Current temp ' + thermostat.getCurrentTemp());
         $('#currenttemp').attr('class', thermostat.energyUsage());
-    }
+        postSettingsServer();
+    };
 
     function updatePowerSaveStatus() {
         if (thermostat.powerSaveStatus == true) {
@@ -44,5 +45,19 @@ $(document).ready(function() {
             var psNow = 'NO'
         }
         $('#powersave').text('PowerSave? ' + psNow);
-    }
+        postSettingsServer();
+    };
+    function postSettingsServer() {
+    $(function () {
+    var settings = thermostat;
+    $.ajax({
+        type: "POST",
+        data :JSON.stringify(settings),
+        url: "/settings",
+        contentType: "application/json"
+      });
+    });
+  }
+
+
 });
