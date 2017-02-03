@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var thermostat = new Thermostat;
     updateTemperature();
     updatePowerSaveStatus();
     $.get('http://api.openweathermap.org/data/2.5/weather?q=Doncaster&appid=8a23b86c2394d1bf648b05e1d963cd18&units=metric', function(data) {
