@@ -26,15 +26,9 @@ $(document).ready(function() {
         updateTemperature();
     });
 
-    $('#powersaving-on').click(function() {
-        thermostat.powerSaveOn();
-        updateTemperature();
-        updatePowerSaveStatus();
-    });
-
-    $('#powersaving-off').click(function() {
-        thermostat.powerSaveOff();
-        updatePowerSaveStatus();
+    $('#powersaving-toggle').click(function(){
+      thermostat.powerSaveToggle();
+      updatePowerSaveStatus();
     });
 
     function updateTemperature() {
@@ -50,5 +44,4 @@ $(document).ready(function() {
         }
         $('#powersave').text('PowerSave? ' + psNow);
     }
-
 });
