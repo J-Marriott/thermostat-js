@@ -1,12 +1,12 @@
 $(document).ready(function() {
     updateTemperature();
     updatePowerSaveStatus();
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=Doncaster&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+    $.get('http://api.openweathermap.org/data/2.5/weather?q=Doncaster&appid=8a23b86c2394d1bf648b05e1d963cd18&units=metric', function(data) {
       $('#current-temperature').text(data.main.temp + ' degrees celsius');
     });
     $('#current-city').change(function() {
       var city = $('#current-city').val();
-      $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+      $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8a23b86c2394d1bf648b05e1d963cd18&units=metric', function(data) {
         $('#current-temperature').text(data.main.temp + ' degrees celsius')
       });
     });
